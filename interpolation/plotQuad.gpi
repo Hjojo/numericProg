@@ -1,0 +1,10 @@
+set term svg background rgb 'white'
+set output "plotQuad.svg"
+set title "Quadratic Spline Random Points"
+set xlabel "x"
+set ylabel "y"
+plot\
+ "dataB.dat" index 0 using 1:2 with points title "Random points"\
+,"dataB.dat" index 1 using 1:2 with lines title "Quadradic Spline"\
+,"dataB.dat" index 1 using 1:3 with lines title "Spline derivative"\
+,"dataB.dat" index 1 using 1:4 with lines title "Spline integral"

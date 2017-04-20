@@ -216,10 +216,10 @@
 		L507.9,312.2 L513.5,320.5 L519.1,328.7 L524.7,326.3 L530.3,323.9 L535.9,321.5 L541.5,319.1 L547.1,316.7
 		L552.6,333.7 L558.2,350.7 L563.8,367.6 L569.4,384.6 L575.0,401.5  '/></g>
 	</g>
-	<g id="gnuplot_plot_3" ><title>integrale</title>
+	<g id="gnuplot_plot_3" ><title>integral</title>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
 	<g transform="translate(507.9,112.6)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
-		<text><tspan font-family="Arial" >integrale</tspan></text>
+		<text><tspan font-family="Arial" >integral</tspan></text>
 	</g>
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">

@@ -1,0 +1,10 @@
+set term svg background rgb 'white'
+set output "plotCubic.svg"
+set title "Cubic Spline Random Points"
+set xlabel "x"
+set ylabel "y"
+plot\
+ "dataC.dat" index 0 using 1:2 with points title "Random points"\
+,"dataC.dat" index 1 using 1:2 with lines title "Cubic Spline"\
+,"dataC.dat" index 1 using 1:3 with lines title "Spline derivative"\
+,"dataC.dat" index 1 using 1:4 with lines title "Spline integral"
