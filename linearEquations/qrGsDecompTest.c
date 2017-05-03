@@ -4,12 +4,11 @@
 #include <gsl/gsl_blas.h>
 #include <gsl/gsl_math.h>
 #include <assert.h>
+#include "qrMethods.h"
 
 #define RND (double)rand()/RAND_MAX
 
 
-void qr_gs_decomp(gsl_matrix *A, gsl_matrix *R);
-void qr_gs_solve(const gsl_matrix *Q, const gsl_matrix *R, gsl_vector *b);
 int equal(double a, double b, double tau, double epsilon);
 
 int main(void) {

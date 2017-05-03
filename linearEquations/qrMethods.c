@@ -2,7 +2,9 @@
 #include <gsl/gsl_vector.h>
 #include <gsl/gsl_matrix.h>
 #include <gsl/gsl_blas.h>
+#include <math.h>
 #include <assert.h>
+#include "qrMethods.h"
 
 void qr_gs_decomp(gsl_matrix *A, gsl_matrix *R) {
 	int n = (*A).size1, m = (*A).size2;
@@ -66,12 +68,62 @@ void qr_gs_inverse(const gsl_matrix *Q, const gsl_matrix *R, gsl_matrix *B) {
 		(*R).size1 == n && (*R).size2 == n &&
 		(*B).size1 == n && (*B).size2 == n );
 
-	//gsl_matrix *Id = gsl_matrix_calloc(n,n);
 	for(int j = 0; j < n; j++) {
 		for(int i = 0; i < n; i++) {
 			gsl_matrix_set(B,i,j,(i == j) ? 1 : 0);
 		}
 		gsl_vector_view v = gsl_matrix_column(B,j);
 		qr_gs_solve(Q,R,&v.vector);
+	}
+}
+
+void qr_givens_decomp(gsl_matrix *A) {
+
+	int n = (*A).size1, m = (*A).size2;
+
+	for(int p = 0; p < n || p < m; p++) {
+		for(int q = p+1; q < n; q++) {
+			double theta = atan2( gsl_matrix_get(A,q,p) , gsl_matrix_get(A,p,p) );
+			for(int j = p; j < m; j++) {
+				double xp = gsl_matrix_get(A,p,j), xq = gsl_matrix_get(A,q,j);
+				gsl_matrix_set(A,p,j, xp*cos(theta)+xq*sin(theta));
+				gsl_matrix_set(A,q,j,-xp*sin(theta)+xq*cos(theta));
+			}
+			gsl_matrix_set(A,q,p,theta);
+		}
+	}
+}
+
+void qr_givens_QTb(const gsl_matrix *QR, gsl_vector *b) {
+	int n = (*QR).size1, m = (*QR).size2;
+
+	assert( (*b).size == n );
+
+	for(int p = 0; p < n || p < m; p++) {
+		for(int q = p+1; q < n; q++) {
+			double theta = gsl_matrix_get(QR,q,p);
+			double bp = gsl_vector_get(b,p), bq = gsl_vector_get(b,q);
+			gsl_vector_set(b,p, bp*cos(theta)+bq*sin(theta));
+			gsl_vector_set(b,q,-bp*sin(theta)+bq*cos(theta));
+		}
+	}
+}
+
+void qr_givens_solve(const gsl_matrix *QR, gsl_vector *b) {
+	qr_givens_QTb(QR,b);
+	upperTriangular_solve(QR,b);
+}
+
+void qr_givens_inverse(const gsl_matrix *QR, gsl_matrix *B) {
+	int n = (*QR).size1, m = (*QR).size2;
+
+	assert( n == m && (*B).size1 == n && (*B).size2 == m );
+
+	for(int j = 0; j < m; j++) {
+		for(int i = 0; i < n; i++) {
+			gsl_matrix_set(B,i,j, (i == j) ? 1 : 0 );
+		}
+		gsl_vector_view v = gsl_matrix_column(B,j);
+		qr_givens_solve(QR,&v.vector);
 	}
 }

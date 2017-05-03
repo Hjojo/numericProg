@@ -1,8 +1,11 @@
-CFLAGS := -Wall -std=gnu99 $$(gsl-config --cflags)
+CFLAGS := -Wall -std=gnu99 $$(gsl-config --cflags) \
+	  #-DHAVE_INLINE -Ofast -march=native \
+	  #-DGSL_RANGE_CHECK_OFF \
+	  #/proc/cpuinfo
 LDLIBS := $$(gsl-config --libs)
 
 .PHONEY: all
-all: A B
+all: A B C
 
 
 .PHONEY: A
@@ -14,6 +17,8 @@ outA.txt logA.txt: qrGsDecompTest
 
 qrGsDecompTest: qrGsDecompTest.o qrMethods.o equal.o
 
+qrGsDecompTest.o qrMethods.o: qrMethods.h
+
 
 .PHONEY: B
 B: outB.txt
@@ -23,6 +28,20 @@ outB.txt logB.txt: qrGsInverseTest
 	./$< 1> $@ 2> logB.txt
 
 qrGsInverseTest: qrGsInverseTest.o qrMethods.o equal.o
+
+qrGsInverseTest.o qrMethods.o: qrMethods.h
+
+
+.PHONEY: C
+C: outC.txt
+	cat $<
+
+outC.txt logC.txt: qrGivensTest
+	./$< 1> $@ 2> logC.txt
+
+qrGivensTest: qrGivensTest.o qrMethods.o equal.o
+
+qrGivensTest.o qrMethods.o: qrMethods.h
 
 
 .PHONEY: clean

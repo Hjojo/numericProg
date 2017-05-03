@@ -1,0 +1,8 @@
+before decomp
+between decomp and solve
+Testing if A x = b...
+test successful
+
+Testing if A^-1 A = I...
+Test successful
+
