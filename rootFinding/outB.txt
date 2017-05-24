@@ -1,0 +1,14 @@
+Rosenbrock Analytic jacobian
+xStart(0) = 1
+xStart(1) = 1
+Function 0 = 9.90541e-07
+Function 1 = -1.03436e-07
+Did it in 1664 iterations.
+
+Rosenbrock diff jacobian
+xStart(0) = 1
+xStart(1) = 1
+Function 0 = 9.83388e-07
+Function 1 = -1.51669e-07
+Did it in 1818 iterations.
+

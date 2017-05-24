@@ -1,0 +1,8 @@
+set term svg background rgb "white"
+set output "plotA.svg"
+set title "Least square fit with F(x) = c_0/x + c_1 + c_2*x"
+set xlabel "x"
+set ylabel "y"
+plot\
+ "outA.dat" index 0 with errorbars title "Raw data"\
+,"outA.dat" index 1 using 1:2 with lines title "F(x)"\

@@ -1,0 +1,6 @@
+Full diagonalization of the matrix of size (100,100).
+Number of rotations for cyclic: 32004
+Took 0.18 seconds
+Full diagonalization of the matrix of size (100,100).
+Number of rotations for classic method: 25183
+Took 0.25 seconds

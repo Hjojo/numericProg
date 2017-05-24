@@ -1,0 +1,5 @@
+Matrix size is (12,12)
+Number of rotations: 338
+
+Testing if VTAV is is equal to a diagonal matrix with the eigenvalues...
+Test successful.

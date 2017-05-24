@@ -1,0 +1,10 @@
+set term svg background rgb "white"
+set output "plotC.svg"
+set title "Least square fit with errors with F(x) = c_0/x + c_1 + c_2*x by singular value decomposition"
+set xlabel "x"
+set ylabel "y"
+plot\
+ "outC.dat" index 0 with errorbars title "Raw data"\
+,"outC.dat" index 1 using 1:2 with lines title "F(x) no error"\
+,"outC.dat" index 1 using 1:3 with lines title "F(x) plus error"\
+,"outC.dat" index 1 using 1:4 with lines title "F(x) minus error"\

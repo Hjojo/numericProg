@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include "cubicSpline.h"
 #include <stdlib.h>
+#include <time.h>
 #define RND ((double)rand()/RAND_MAX-0.5)*2
 
 int main() {
+	srand(time(NULL)); // Cause rand to get new seeds each run.
 	int n = 20;
 	double x[n], y[n];
 	double xStart = 2;

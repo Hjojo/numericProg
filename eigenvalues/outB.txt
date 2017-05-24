@@ -1,0 +1,16 @@
+Size of matrix is (12,12) and number of eigenvalues to be found is 4
+Number of rotations: 6720
+
+Eigenvalue vector - 4 smallest elements.
+-1
+-1
+-1
+-0.5
+
+Matrix size is (50,50).
+Full diagonalization of the matrix of size (50,50).
+Number of rotations for value-by-value: 315700
+Number of rotations for cyclic: 7004
+
+Number of rotations for only the lowest eigenvalue with the value-by-value method: 4552
+
