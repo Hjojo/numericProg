@@ -11,9 +11,8 @@
 
 int equal(double a, double b, double tau, double epsilon);
 
-int main(void) {
-
-	int n = 10, m = 10;
+void decompTest(void) {
+	int n = 10, m = 7;
 	double tau = 1e-12, epsilon = 1e-12;
 	gsl_matrix *A = gsl_matrix_alloc(n,m);
 	gsl_matrix *R = gsl_matrix_alloc(m,m);
@@ -53,7 +52,6 @@ int main(void) {
 		for(int j = 0; j < m; j++) {
 			fprintf(stderr,"%.1g\t",gsl_matrix_get(QTQ,i,j));
 			double expectedValue = (i == j) ? 1 : 0;
-			//printf("Exp %g\n",expectedValue);
 			assert( equal(gsl_matrix_get(QTQ,i,j),expectedValue,tau,epsilon) );
 		}
 		fprintf(stderr,"\n");
@@ -81,6 +79,30 @@ int main(void) {
 	printf("The check for QR = A turned out positive.\n\n");
 
 
+	gsl_matrix_free(A);
+	gsl_matrix_free(R);
+	gsl_matrix_free(AOriginal);
+	gsl_matrix_free(QTQ);
+	gsl_matrix_free(QR);
+}
+
+void solveTest(void) {
+
+	int n = 10, m = 10;
+	double tau = 1e-12, epsilon = 1e-12;
+	gsl_matrix *A = gsl_matrix_alloc(n,m);
+	gsl_matrix *R = gsl_matrix_alloc(m,m);
+
+	for(int i = 0; i < n; i++) {
+		for(int j = 0; j < m; j++) {
+			gsl_matrix_set(A,i,j,RND);
+		}
+	}
+
+	gsl_matrix *AOriginal = gsl_matrix_alloc(n,m);
+	gsl_matrix_memcpy(AOriginal,A);
+
+	qr_gs_decomp(A,R);
 
 	gsl_vector *b = gsl_vector_alloc(n);
 	for(int i = 0; i < n; i++) {
@@ -109,13 +131,17 @@ int main(void) {
 	printf("\n");
 
 	gsl_matrix_free(A);
-	gsl_matrix_free(R);
 	gsl_matrix_free(AOriginal);
-	gsl_matrix_free(QTQ);
-	gsl_matrix_free(QR);
+	gsl_matrix_free(R);
 	gsl_vector_free(b);
 	gsl_vector_free(bOriginal);
 	gsl_vector_free(bSolved);
+
+}
+
+int main(void) {
+	decompTest();
+	solveTest();
 
 	return 0;
 }

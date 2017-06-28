@@ -20,6 +20,8 @@ int main(int argc, char *argv[]) {
 		printf("Size of matrix is (%d,%d) and number of eigenvalues to be found is %d\n",n,n,numberEigVal);
 	}
 
+	printf("The largest eigenvalues can be found by adding a phase of pi/2 to the rotation angle\n\n");
+
 	gsl_matrix *A = gsl_matrix_alloc(n,n);
 	gsl_matrix *eigVec = gsl_matrix_alloc(n,n);
 	gsl_vector *eigVal = gsl_vector_alloc(n);

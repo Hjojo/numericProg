@@ -1,5 +1,3 @@
-before decomp
-between decomp and solve
 Testing if A x = b...
 test successful
 

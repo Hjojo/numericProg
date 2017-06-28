@@ -1,0 +1,8 @@
+set term svg background rgb "white"
+set output "plotB.svg"
+set title "Exponetiel fit to some data"
+set xlabel "t"
+set ylabel "y"
+plot\
+ "outBFit.txt" index 0 with errorbars title "Raw data"\
+,"outBFit.txt" index 1 using 1:2 with lines title "Exp fit"\

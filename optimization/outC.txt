@@ -1,0 +1,65 @@
+Simplex: Rosenbrock minimization
+Updated reflection 1
+Updated reflection 1
+Updated contraction
+Updated reduction
+Updated contraction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Did 28 iterations.
+Simplex:
+4.3 	4.3 	4.3 	
+19 	19 	19 	
+
+Simplex: Himmelblau minimization
+Updated reduction
+Updated contraction
+Updated contraction
+Updated contraction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Updated reduction
+Did 26 iterations.
+Simplex:
+3.7 	3.7 	3.7 	
+-1.3 	-1.3 	-1.3 	

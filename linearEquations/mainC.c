@@ -35,7 +35,6 @@ int main(void) {
 	gsl_matrix_memcpy(AOriginal,A);
 	gsl_vector_memcpy(bOriginal,b);
 
-	printf("before decomp\n");
 	qr_givens_decomp(A);
 
 	fprintf(stderr,"A decomposed\n");
@@ -49,7 +48,6 @@ int main(void) {
 
 	qr_givens_solve(A,b);
 
-	printf("between decomp and solve\n");
 	gsl_vector *result = gsl_vector_alloc(n);
 	gsl_blas_dgemv(CblasNoTrans,1.0,AOriginal,b,0.0,result);
 	printf("Testing if A x = b...\n");

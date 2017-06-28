@@ -27,7 +27,7 @@ qspline * qspline_alloc(int n, double *x, double *y) {
 		(*s).c[i+1] = (p[i+1]-p[i]-(*s).c[i]*deltax[i])/deltax[i+1];
 	}
 
-	(*s).c[n-2] = (*s).c[n-2]/2;
+	(*s).c[n-2] /= 2;
 	for(int i = n-3; i>=0; i--) {
 		(*s).c[i] = (p[i+1]-p[i]-(*s).c[i+1]*deltax[i+1])/deltax[i];
 	}

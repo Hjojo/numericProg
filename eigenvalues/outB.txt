@@ -1,4 +1,6 @@
 Size of matrix is (12,12) and number of eigenvalues to be found is 4
+The largest eigenvalues can be found by adding a phase of pi/2 to the rotation angle
+
 Number of rotations: 6720
 
 Eigenvalue vector - 4 smallest elements.

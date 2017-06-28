@@ -1,0 +1,13 @@
+Rosenbrock minimization
+xStart(0) = 1
+xStart(1) = 1
+f(xStart) = 3.21925e-23
+|df(xStart)| = 2.40128e-10
+Did 29 iterations.
+
+Himmelblau minimization
+xStart(0) = 3.58443
+xStart(1) = -1.84813
+f(xStart) = 3.20154e-15
+|df(xStart)| = 4.29907e-07
+Did 10 iterations.

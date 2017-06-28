@@ -1,0 +1,3 @@
+Solve y' = y*(1-y) for y(0) = 0.5
+y(2) = 0.880797
+Exact solution is 0.880797

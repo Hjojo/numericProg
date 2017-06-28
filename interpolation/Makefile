@@ -11,10 +11,10 @@ A: plotLinterpRandom.svg plotLinterpSin.svg
 plotLinterpRandom.svg plotLinterpSin.svg: plotLinterp.gpi dataA.dat
 	gnuplot $<
 
-dataA.dat: integLinterp
+dataA.dat: mainA
 	./$< > $@
 
-integLinterp: integLinterp.o linterp.o
+mainA: linterp.o
 
 
 .PHONEY: B
@@ -23,12 +23,12 @@ B: plotQuad.svg
 plotQuad.svg: plotQuad.gpi dataB.dat
 	gnuplot $<
 
-dataB.dat: quadSplineTest
+dataB.dat: mainB
 	./$< > $@
 
-quadSplineTest: quadSplineTest.o quadSpline.o
+mainB: mainB.o quadSpline.o
 
-quadSplineTest.o quadSpline.o: quadSpline.h
+mainB.o quadSpline.o: quadSpline.h
 
 
 .PHONEY: C
@@ -37,14 +37,14 @@ C: plotCubic.svg
 plotCubic.svg: plotCubic.gpi dataC.dat
 	gnuplot $<
 
-dataC.dat: cubicSplineTest
+dataC.dat: mainC
 	./$< > $@
 
-cubicSplineTest: cubicSplineTest.o cubicSpline.o
+mainC: mainC.o cubicSpline.o
 
-cubicSplineTest.o cubicSpline.o: cubicSpline.h
+mainC.o cubicSpline.o: cubicSpline.h
 
 
 .PHONEY: clean
 clean:
-	$(RM) *.o *.svg *.dat integLinterp quadSplineTest cubicSplineTest
+	$(RM) *.o *.svg *.dat mainA mainB mainC
