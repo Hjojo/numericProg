@@ -1,0 +1,14 @@
+Calculating int_0^INF exp(-x) dx
+Integral = 1 with error = 6.60997e-07
+Should be 1
+Did a total of 436 evaluations
+
+Calculating int_-INF^0 x*exp(-x^2) dx
+Integral = -0.5 with error = 4.63968e-07
+Should be -0.5
+Did a total of 560 evaluations
+
+Calculating int_-INF^INF 1/(x^2+25) dx
+Integral = 0.628319 with error = 5.56352e-07
+Should be 0.628319
+Did a total of 992 evaluations

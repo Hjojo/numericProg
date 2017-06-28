@@ -13,7 +13,7 @@ double adaptClosedRectTrapz(
 	double f3,
 	int noRecursions
 ) {
-	assert(noRecursions < 1e4);
+	assert(noRecursions < 1e6);
 
 	double f2 = f((a+b)/2);
 
@@ -31,7 +31,6 @@ double adaptClosedRectTrapz(
 		*err = sqrt( pow(err1,2) + pow(err2,2) );
 		return Q1+Q2;
 	}
-
 }
 
 
@@ -46,13 +45,13 @@ double adaptOpenRectTrapz(
 	double f3,
 	int noRecursions
 ) {
-	assert(noRecursions < 1e4);
+	assert(noRecursions < 1e6);
 
 	double f1 = f(a+(b-a)/6);
 	double f4 = f(a+(b-a)*5/6);
 
 	double Q = (2*f1+f2+f3+2*f4)*(b-a)/6;
-	double q = (f1+f2+2*f3+f4)*(b-a)/6;
+	double q = (f1+f2+f3+f4)*(b-a)/4;
 	*err = fabs(Q-q);
 	double tol = abs + eps*fabs(Q);
 
@@ -60,12 +59,11 @@ double adaptOpenRectTrapz(
 		return Q;
 	} else {
 		double err1, err2;
-		double Q1 = adaptClosedRectTrapz(f,a,(a+b)/2,abs/sqrt(2),eps,&err1,f1,f2,noRecursions+1);
-		double Q2 = adaptClosedRectTrapz(f,(a+b)/2,b,abs/sqrt(2),eps,&err2,f3,f4,noRecursions+1);
+		double Q1 = adaptOpenRectTrapz(f,a,(a+b)/2,abs/sqrt(2),eps,&err1,f1,f2,noRecursions+1);
+		double Q2 = adaptOpenRectTrapz(f,(a+b)/2,b,abs/sqrt(2),eps,&err2,f3,f4,noRecursions+1);
 		*err = sqrt( pow(err1,2) + pow(err2,2) );
 		return Q1+Q2;
 	}
-
 }
 
 
@@ -125,8 +123,6 @@ double adaptIntegClosedWithInf(
 		a = 0; b = 1;
 	}
 
-	printf("%g\n",f(2));
-
 	return adaptIntegClosed(f,a,b,abs,eps,err);
 
 }
@@ -141,24 +137,24 @@ double adaptIntegOpenWithInf(
 ) {
 
 	if( (isinf(a) == -1) & (isinf(b) == 1) ) {
-		double f(double t) {
+		double pmInf(double t) {
 			return f( t/(1-pow(t,2)) ) * (1+pow(t,2))/pow(1-pow(t,2),2);
 		}
-		a = -1; b = 1;
+		double aNew = -1, bNew = 1;
+		return adaptIntegOpen(pmInf,aNew,bNew,abs,eps,err);
 	} else if( isinf(a) == -1 ) {
-		double f(double t) {
+		double plusInf(double t) {
 			return f( b-(1-t)/t )/pow(t,2);
 		}
-		a = 0; b = 1;
+		double aNew = 0, bNew = 1;
+		return adaptIntegOpen(plusInf,aNew,bNew,abs,eps,err);
 	} else if( isinf(b) == 1 ) {
-		double f(double t) {
+		double minInf(double t) {
 			return f( a+(1-t)/t )/pow(t,2);
 		}
-		a = 0; b = 1;
+		double aNew = 0, bNew = 1;
+		return adaptIntegOpen(minInf,aNew,bNew,abs,eps,err);
 	}
 
-	printf("%g\n",f(2));
-
 	return adaptIntegOpen(f,a,b,abs,eps,err);
-
 }
