@@ -1,0 +1,16 @@
+Calculating int_0^1 sqrt(x) dx
+Integral = 0.666681 with error = 7.17421e-05
+Should be 0.666667
+
+Calculating int_0^1 1/sqrt(x) dx
+Integral = 2 with error = 7.70898e-05
+Should be 2
+
+Calculating int_0^1 ln(x)/sqrt(x) dx
+Integral = -4 with error = 8.09349e-05
+Should be -4
+
+Calculating int_0^1 4*sqrt(1-(1-x)^2) dx
+Integral = 3.14159265359608 with error = 5.97213e-09
+Should be  3.14159265358979
+Did a total of 3788 evaluations
