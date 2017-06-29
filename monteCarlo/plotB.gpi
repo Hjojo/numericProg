@@ -1,0 +1,9 @@
+set term svg background rgb "white"
+set output "plotB.svg"
+set title "Behave (approximately) as 1/sqrt(N)"
+set xlabel "N"
+set ylabel "error"
+set logscale x 10
+plot\
+ "outB.txt" index 0 using 1:2 with lines title "error connected"\
+,"outB.txt" index 0 using 1:2 with points title "error points"\

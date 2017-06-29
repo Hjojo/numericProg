@@ -1,0 +1,14 @@
+Simple integral #1
+Result = 1265.53
+Error = 17.4051
+Should be 1272.35
+
+Simple integral #2
+Result = 1716.64
+Error = 1.97075
+Should be 1719
+
+Hard integral
+Result = 1.33486
+Error = 0.0293402
+Should be 1.3932
