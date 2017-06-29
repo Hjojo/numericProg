@@ -27,7 +27,7 @@ int main(void) {
 
 	printf("#Cubic sub-spline\n");
 	printf("# x \t ySub \t yCubic \t yQuad\n");
-	for(double i = 0; i < n; i += 0.05) {
+	for(double i = 0; i <= n; i += 0.05) {
 		printf("%g \t %g \t %g \t %g\n",
 			i,
 			cspline_evaluate(cSub,i),

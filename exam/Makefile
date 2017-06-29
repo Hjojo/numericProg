@@ -38,4 +38,4 @@ quadSpline.o: quadSpline.h
 
 .PHONEY:
 clean:
-	$(RM) *.o *.txt *.svg mainRND mainSin
+	$(RM) *.o outRND.txt outSin.txt *.svg mainRND mainSin
